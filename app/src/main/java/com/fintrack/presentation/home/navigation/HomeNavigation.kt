@@ -11,12 +11,14 @@ import org.koin.androidx.compose.koinViewModel
 /**
  * Created by fasil on 01/03/25.
  */
-@Serializable data object HomeRoute
+@Serializable
+data object HomeRoute
 
-fun NavGraphBuilder.homeScreen() {
+fun NavGraphBuilder.homeScreen(onClickViewAll: () -> Unit) {
     composable<HomeRoute> {
         val viewModel = koinViewModel<HomeViewModel>()
         HomeScreen(
+            onClickViewAll = onClickViewAll,
             viewModel.totalSpent.collectAsStateWithLifecycle(),
             viewModel.totalBudget.collectAsStateWithLifecycle(),
             viewModel.recent5Expenses.collectAsStateWithLifecycle()

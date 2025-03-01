@@ -1,7 +1,6 @@
 package com.fintrack.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.fintrack.presentation.analytics.navigation.analyticsScreen
@@ -11,6 +10,8 @@ import com.fintrack.presentation.category.navigation.categoriesScreen
 import com.fintrack.presentation.category.navigation.navigateToAddCategoryScreen
 import com.fintrack.presentation.category.navigation.navigateToCategoriesScreen
 import com.fintrack.presentation.expense.navigation.addExpenseScreen
+import com.fintrack.presentation.expense.navigation.navigateToViewAllExpenseScreen
+import com.fintrack.presentation.expense.navigation.viewAllExpenseScreen
 import com.fintrack.presentation.home.navigation.HomeRoute
 import com.fintrack.presentation.home.navigation.homeScreen
 
@@ -23,7 +24,7 @@ fun FinTrackNavHost(navHostController: NavHostController) {
         navController = navHostController,
         startDestination = HomeRoute
     ) {
-        homeScreen()
+        homeScreen(onClickViewAll = { navHostController.navigateToViewAllExpenseScreen() })
         analyticsScreen()
         addExpenseScreen(
             onClickCategory = {
@@ -46,5 +47,6 @@ fun FinTrackNavHost(navHostController: NavHostController) {
         addCategoryScreen(
             onClickBack = { navHostController.navigateUp() }
         )
+        viewAllExpenseScreen(onClickBack = { navHostController.navigateUp() })
     }
 }

@@ -24,6 +24,7 @@ import com.fintrack.presentation.components.ExpenseItem
  */
 @Composable
 fun HomeScreen(
+    onClickViewAll: () -> Unit,
     totalSpent: State<Double>,
     totalBudget: State<Double>,
     recentExpenses: State<List<ExpenseWithCategory>>,
@@ -44,7 +45,7 @@ fun HomeScreen(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.weight(1f)
                 )
-                TextButton(onClick = {}) {
+                TextButton(onClick = onClickViewAll) {
                     Text("View all")
                 }
             }

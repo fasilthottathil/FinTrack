@@ -18,6 +18,7 @@ import com.fintrack.navigation.FinTrackNavHost
 import com.fintrack.presentation.category.navigation.AddCategoryRoute
 import com.fintrack.presentation.category.navigation.CategoriesRoute
 import com.fintrack.presentation.components.FTBottomNav
+import com.fintrack.presentation.expense.navigation.ViewAllExpenseRoute
 import com.fintrack.ui.theme.FinTrackTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,8 @@ class MainActivity : ComponentActivity() {
             val currentDestination = navBackStackEntry?.destination
             val shouldShowBottomNav = currentDestination?.route !in listOf(
                 CategoriesRoute::class.qualifiedName,
-                AddCategoryRoute::class.qualifiedName
+                AddCategoryRoute::class.qualifiedName,
+                ViewAllExpenseRoute::class.qualifiedName
             )
             FinTrackTheme {
                 Scaffold(

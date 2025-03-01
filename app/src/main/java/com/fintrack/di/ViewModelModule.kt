@@ -5,6 +5,7 @@ import com.fintrack.presentation.budget.BudgetViewModel
 import com.fintrack.presentation.category.add.AddCategoryViewModel
 import com.fintrack.presentation.category.categories.CategoriesViewModel
 import com.fintrack.presentation.expense.add.AddExpenseViewModel
+import com.fintrack.presentation.expense.view.ViewAllExpenseViewModel
 import com.fintrack.presentation.home.HomeViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
@@ -19,4 +20,5 @@ val viewModelModule = module {
     viewModel { BudgetViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get()) }
     viewModel { AnalyticsViewModel(get(), get()) }
+    viewModel { ViewAllExpenseViewModel(get()) }
 }
