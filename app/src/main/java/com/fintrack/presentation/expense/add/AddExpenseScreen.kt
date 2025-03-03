@@ -15,6 +15,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -48,6 +49,7 @@ fun AddExpenseScreen(
     state: State<CategoryEntity?>
 ) {
     var amount by rememberSaveable { mutableStateOf("") }
+    var title by rememberSaveable { mutableStateOf("") }
     var category by remember { mutableStateOf("") }
     var showSuccessDialog by remember { mutableStateOf(false) }
     LaunchedEffect(state.value) {
@@ -61,6 +63,7 @@ fun AddExpenseScreen(
             showSuccessDialog = false
             amount = ""
             category = ""
+            title = ""
         }
     }
 
@@ -93,6 +96,19 @@ fun AddExpenseScreen(
             visualTransformation = VisualTransformation.None
         )
         Spacer(modifier = Modifier.height(25.dp))
+        Text("Description")
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = title,
+            onValueChange = { newText ->
+                title = newText
+            },
+            placeholder = {
+                Text("Enter description.")
+            }
+        )
+        Spacer(modifier = Modifier.height(12.dp))
+        Text("Category(*)")
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -117,7 +133,7 @@ fun AddExpenseScreen(
                 .fillMaxWidth()
                 .height(60.dp),
             onClick = {
-                onClickAdd(amount, category)
+                onClickAdd(amount, title)
                 showSuccessDialog = true
             },
             shape = ShapeDefaults.Small,
